@@ -3,8 +3,8 @@
 	
 	if(empty($_POST)=== false){
 		
-		$isim = $_POST['kullaniciadi'];
-		$sifre = md5($_POST['sifre']);
+		$kullaniciadi = $_POST['kullaniciadi'];
+		$sifre = $_POST['sifre'];
 
 		if(empty($kullaniciadi) === true || empty($sifre) === true){
 			$hatalar[] = 'kullanici adi ve şifre boş bırakılamaz.';
