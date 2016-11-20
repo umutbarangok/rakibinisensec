@@ -1,6 +1,6 @@
 <?php
 	include 'core/init.php';
-	
+
 	if(empty($_POST)=== false){
 		
 		$kullaniciadi = $_POST['kullaniciadi'];
@@ -13,8 +13,18 @@
 			$hatalar[] = 'Kullanıcı bulunamadı.';
 		}else if (kullanici_aktif($kullaniciadi) === false) {
 			$hatalar[] = 'Hesabınızı aktifleştirin.';
+		}else{
+			$login = login($kullaniciadi,$sifre);
+			if ($login === false) {
+				$hatalar[] = 'kullanici adi ve sifre eslesmedi!';
+			}else{
+				$_SESSION['uyeId'] = $login;
+
+				header('Location : index.php');
+				exit();
+			}
 		}
-		print_r($hatalar);
+		
 		
 	}
 ?>
